@@ -1,5 +1,9 @@
 # Command Cheat Sheet
 
+This page is my long term memory of command line tools.
+
+Another great resource is [tldr pages](https://tldr.sh/).
+
 ## Linux
 
 ```shell
@@ -9,6 +13,8 @@ du -h --max-depth=1 /var  # Show directory disk usage going one folder deep
 du -h /var/ | sort -rh | head -5  # Show to five directory disk usage
 resize2fs /dev/<device><partition> #[Linux] Resize the file system to an expanded partition
 lsblk  # List block devices or disk devices and partitions
+
+find -name "<search string>*" -exec mv -t ./<target dir>/ {} + # Move all the found files to the target dir
 
 watch <command> # Runs the command at a 2 second interval displaying result
 
