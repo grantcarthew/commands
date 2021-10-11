@@ -40,17 +40,71 @@ sudo dhclient -r -v <interface name> && sudo rm /var/lib/dhcp/dhclient.* ; sudo 
 
 ## Git
 
+Notes:
+
+* GitHub now uses `main` as the `master` branch name
+
 ```shell
+git init # Creates a new git repository in the current directory
 git status # Show the repository status
 git diff # Show the file differences in the working tree
 git diff --staged # Show the file differences in staged files
-git checkout -b <name> # Create a new branch and switch to it
+
+git clone <remote-repository-address> # Clones the remote repository
+git fetch # Download objects and refs
+git fetch --all # Fetch all remotes
+git pull <remote> <branch-name> # Update local with changes from remote
+git pull # Update local with changes from origin (works after 'git pull origin master' once)
+git pull --all # Updates local with all branches and changes from origin
+
+git branch # List local branches
+git branch -a # List all branches
+git checkout -b <branch-name> # Create a new branch and switch to it
+git branch <branch-name> # Create a new branch without switching to it
+git checkout <branch-name> # Switch to a new branch
+git checkout origin/<branch-name> # Switch to an upstream branch
+git branch -m <new-branch-name> # Rename the current branch
+git branch -m <old-branch-name> <new-branch-name> # Rename a branch
+git merge <branch-name> # Merges the changes in <branch-name> into the current branch
+git branch -d <branch-name> # Deletes a pushed or merged branch
+git branch -D <branch-name> # Force delete a branch
+git push <origin-or-remote-name> --delete <branch-name> # Delete a remote branch
+
 git add . # Stage all changed files for commiting
-git add <file path> # Stage the file for commiting
-git add <file path>\* # Stage all the files in the directory for commiting
-git merge <branch> # Merges the changes in <branch> into the current branch
-git commit -m "<messabe" # Commit the staged files into the local repository
-git push origin <branch> # Push the local repository changes up to the origin
+git add <file-path> # Stage the file for commiting
+git add <file-path>\* # Stage all the files in the directory for commiting
+git reset # Undo the git add command for all files, no changes lost
+git reset <file-path> # Undo the git add command for a single file, no changes lost
+git commit -m "<message>" # Commit the staged files into the local repository
+git commit --amend # Change the last commit message for local only
+git reset --soft HEAD~1 # Undo the last commit locally preserving changes
+git reset --hard HEAD~1 # Delete the last commit losing all modifications
+git reset --hard HEAD # Delete all changes in the working tree
+git reset --hard <commit-hash> # Deletes everything back to the previous commit
+git push origin <branch-name> # Push the local repository changes up to the origin
+git push -f origin <branch-name> # Force push the local repository changes up to the origin
+
+git log # Show the commit logs
+git log --oneline # Shows the commit logs with key and message only
+git log <file-path> # Shows the commit logs for a single file
+
+git checkout <file-path> # Resets a changed file back to the last commit state
+git checkout <commit-hash> -- <file-path> # Resets a file back to a commit state
+git checkout <commit-hash> # Switch the working tree to a previous commit
+git checkout -b <branch-name> <commit-hash> # Create a new branch from an previous commit
+git revert <commit-hash> # Adds a new commit at the HEAD set to a previous commit
+git rm <file-name> # Remove a file from the working tree and from git
+git rm --cached <file-name> # Remove a file from git without remove the local file
+
+git tag # List all tags
+git tag <tag-name> # Creates a lightweight tag to the current commit
+git tag -a <tag-name> # Creates an annotated tag to the current commit
+git push origin <tag-name> # Pushes a local tag to the origin
+git push origin --tags # Pushes all local tags to the origin
+
+git remote -v # List all remotes
+git remote add <remote-alias> <remote-address> # Add a new remote
+git remote rm <remote-alias> # Remove a remote
 ```
 
 ## SQL
